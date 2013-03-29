@@ -9,7 +9,7 @@ spl_autoload_register(function ($classname){
 	return false;
 });
 
-$text = 'порверка както-то так-с';
+$text = 'порверка как-то так-с';
 
 $frequency = new \AnalyzerText\Analyzer\Frequency();
 $frequency->setText(new \AnalyzerText\Text($text));
