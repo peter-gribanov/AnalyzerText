@@ -14,11 +14,11 @@ $text = 'порверка както-то так-с';
 $frequency = new \AnalyzerText\Analyzer\Frequency();
 $frequency->setText(new \AnalyzerText\Text($text));
 
-// аналезируем вечь список слов
+// анализируем весь список слов
 var_dump(array_slice($frequency->getFrequency(), 0, 20));
 var_dump(array_slice($frequency->getPercent(), 0, 20));
 
-// фильтруем и получаем только информативные слова
+// фильтруем и получаем только информационные слова
 $frequency->applyFilters()->Informative();
 var_dump(array_slice($frequency->getFrequency(), 0, 20));
 var_dump(array_slice($frequency->getPercent(), 0, 20));
