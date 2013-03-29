@@ -13,7 +13,9 @@ $text_obj = new \AnalyzeText\Text($text);
 $word = $text_obj->current();
 ```
 
-получив слово можно получить как его оригинальную форму так и форму в нижнем регистре для 
+Получив слово можно получить как его оригинальную форму так и форму в нижнем регистре для
+
+*Текст на входе ожидается в кодировке UTF-8*
 
 ## Анализаторы
 
@@ -47,3 +49,22 @@ $graph_filter = array_slice(array_merge_recursive($frequency->getFrequency(), $f
 ```
 
 ![alt text] (http://img62.imageshack.us/img62/5470/seoxv.png)
+
+## Производительность
+
+Для анализа производительности использовался следующий код
+```php
+$i = $ii = 1000;
+$start = microtime(1);
+while ($i--) {
+	$frequency = new AnalyzeText_Analyzer_Frequency();
+	$frequency->setText(new AnalyzeText_Text($text))->applyFilters()->Informative();
+	$frequency->getFrequency();
+	$frequency->getPercent();
+}
+echo (microtime(1)-$start)/$ii;
+```
+
+Для теста взят текст в 15190 символов, 2707 слов.
+
+Результат: ~0.29 c.
