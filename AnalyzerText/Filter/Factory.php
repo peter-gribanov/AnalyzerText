@@ -97,7 +97,7 @@ class Factory {
 	 * @return \AnalyzerText\Filter\Factory
 	 */
 	private function apply(Filter $filter) {
-		if ($filter->getText() instanceof Text && $filter->getText()->count()) {
+		if ($filter->getText()->count()) {
 			$words = array();
 			foreach ($filter as $word) {
 				$words[] = $word->getWord();
