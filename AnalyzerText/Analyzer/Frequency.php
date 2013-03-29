@@ -51,7 +51,7 @@ class Frequency extends Analyzer {
 	 */
 	public function getFrequency() {
 		if (!$this->frequencies && $this->getText()->count()) {
-			foreach ($this->text as $word) {
+			foreach ($this->getText() as $word) {
 				if (!isset($this->frequencies[$word->getPlain()])) {
 					$this->frequencies[$word->getPlain()] = 0;
 				}
