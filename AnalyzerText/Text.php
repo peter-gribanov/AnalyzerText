@@ -37,8 +37,8 @@ class Text extends \ArrayIterator {
 	public function __construct($text) {
 		$words = array();
 		// слово не может начинаться с тире и не может содержать только его
-		if (preg_match_all('/[[:alnum:]]+(?:[-\'][[:alnum:]]+)*/u', trim(strip_tags($text)), $math)) {
-			$words = $math[0];
+		if (preg_match_all('/[[:alnum:]]+(?:[-\'][[:alnum:]]+)*/u', trim(strip_tags($text)), $match)) {
+			$words = $match[0];
 			// получение списка слов в нижнем регистре
 			$this->plains = explode(' ', mb_strtolower(implode(' ', $words), 'utf8'));
 		}
