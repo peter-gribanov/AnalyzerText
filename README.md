@@ -48,8 +48,6 @@ $frequency->applyFilters()->Informative();
 $graph_filter = array_slice(array_merge_recursive($frequency->getFrequency(), $frequency->getPercent()), 0, 20);
 ```
 
-![alt text] (http://img62.imageshack.us/img62/5470/seoxv.png)
-
 ## Производительность
 
 Для анализа производительности использовался следующий код
@@ -57,8 +55,8 @@ $graph_filter = array_slice(array_merge_recursive($frequency->getFrequency(), $f
 $i = $ii = 1000;
 $start = microtime(1);
 while ($i--) {
-	$frequency = new AnalyzeText_Analyzer_Frequency();
-	$frequency->setText(new AnalyzeText_Text($text))->applyFilters()->Informative();
+	$frequency = new \AnalyzeText\Analyzer\Frequency();
+	$frequency->setText(new \AnalyzeText\Text($text))->applyFilters()->Informative();
 	$frequency->getFrequency();
 	$frequency->getPercent();
 }
