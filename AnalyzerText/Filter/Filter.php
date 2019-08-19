@@ -18,19 +18,17 @@ use AnalyzerText\Text\Word;
 abstract class Filter extends \FilterIterator
 {
     /**
-     * Конструктор
-     *
-     * @param \AnalyzerText\Text $iterator Текст
+     * @param Text $text
      */
-    public function __construct(Text $iterator)
+    public function __construct(Text $text)
     {
-        parent::__construct($iterator);
+        parent::__construct($text);
     }
 
     /**
      * Возвращает текущее слово.
      *
-     * @return \AnalyzerText\Text\Word
+     * @return Word
      */
     public function current()
     {
@@ -40,7 +38,7 @@ abstract class Filter extends \FilterIterator
     /**
      * Возвращает текст
      *
-     * @return \AnalyzerText\Text
+     * @return Text
      */
     public function getText()
     {
@@ -50,7 +48,7 @@ abstract class Filter extends \FilterIterator
     /**
      * Возвращает текст
      *
-     * @return \AnalyzerText\Text
+     * @return Text
      */
     public function getInnerIterator()
     {
@@ -60,7 +58,7 @@ abstract class Filter extends \FilterIterator
     /**
      * Заменяет слово в тексте.
      *
-     * @param \AnalyzerText\Text\Word $word Слово
+     * @param Word $word Слово
      */
     protected function replace(Word $word)
     {
@@ -72,7 +70,7 @@ abstract class Filter extends \FilterIterator
      *
      * @param int|null $shift Смещение
      *
-     * @return \AnalyzerText\Text\Word|null
+     * @return Word|null
      */
     protected function getPreviousWord($shift = 1)
     {
@@ -84,7 +82,7 @@ abstract class Filter extends \FilterIterator
      *
      * @param int|null $shift Смещение
      *
-     * @return \AnalyzerText\Text\Word|null
+     * @return Word|null
      */
     protected function getNextWord($shift = 1)
     {

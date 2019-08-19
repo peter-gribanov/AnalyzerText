@@ -45,9 +45,7 @@ abstract class WordList extends Filter
     private $sequence = array();
 
     /**
-     * Конструктор
-     *
-     * @param \AnalyzerText\Text $iterator Текст
+     * @param Text $iterator Текст
      */
     public function __construct(Text $iterator)
     {
@@ -70,7 +68,7 @@ abstract class WordList extends Filter
     /**
      * Это последовательность.
      *
-     * @param \AnalyzerText\Text\Word $word Слово
+     * @param Word $word Слово
      *
      * @return bool
      */
@@ -102,7 +100,7 @@ abstract class WordList extends Filter
     /**
      * Это простое слово.
      *
-     * @param \AnalyzerText\Text\Word $word Слово
+     * @param Word $word Слово
      *
      * @return bool
      */
@@ -114,7 +112,7 @@ abstract class WordList extends Filter
     /**
      * Это составное слово.
      *
-     * @param \AnalyzerText\Text\Word $word Слово
+     * @param Word $word Слово
      *
      * @return bool
      */

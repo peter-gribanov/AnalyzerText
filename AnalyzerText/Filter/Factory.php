@@ -21,16 +21,12 @@ use AnalyzerText\Filter\WordList\Union;
 class Factory
 {
     /**
-     * Анализатор
-     *
-     * @var \AnalyzerText\Analyzer\Analyzer
+     * @var Analyzer
      */
     private $analyzer;
 
     /**
-     * Конструктор
-     *
-     * @param \AnalyzerText\Analyzer\Analyzer $analyzer Анализатор
+     * @param Analyzer $analyzer
      */
     public function __construct(Analyzer $analyzer)
     {
@@ -40,7 +36,7 @@ class Factory
     /**
      * Применяет фильтр Informative.
      *
-     * @return \AnalyzerText\Filter\Factory
+     * @return Factory
      */
     public function Informative()
     {
@@ -50,7 +46,7 @@ class Factory
     /**
      * Применяет фильтр Preposition.
      *
-     * @return \AnalyzerText\Filter\Factory
+     * @return Factory
      */
     public function Preposition()
     {
@@ -60,7 +56,7 @@ class Factory
     /**
      * Применяет фильтр Pronoun.
      *
-     * @return \AnalyzerText\Filter\Factory
+     * @return Factory
      */
     public function Pronoun()
     {
@@ -70,7 +66,7 @@ class Factory
     /**
      * Применяет фильтр Union.
      *
-     * @return \AnalyzerText\Filter\Factory
+     * @return Factory
      */
     public function Union()
     {
@@ -80,7 +76,7 @@ class Factory
     /**
      * Применяет фильтр Adverb.
      *
-     * @return \AnalyzerText\Filter\Factory
+     * @return Factory
      */
     public function Adverb()
     {
@@ -90,9 +86,9 @@ class Factory
     /**
      * Применяет фильтр
      *
-     * @param \AnalyzerText\Filter\Filter $filter Фильтр
+     * @param Filter $filter
      *
-     * @return \AnalyzerText\Filter\Factory
+     * @return Factory
      */
     private function apply(Filter $filter)
     {
