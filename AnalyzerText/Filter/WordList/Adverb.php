@@ -1,29 +1,26 @@
 <?php
 /**
- * AnalyzerText package
- * 
- * @package AnalyzerText
+ * AnalyzerText package.
+ *
  * @author  Peter Gribanov <info@peter-gribanov.ru>
  */
 
 namespace AnalyzerText\Filter\WordList;
 
-use AnalyzerText\Filter\WordList\WordList;
-
 /**
- * Оставляет в списке наречия
+ * Оставляет в списке наречия.
  *
  * @author  Peter Gribanov <info@peter-gribanov.ru>
- * @package AnalyzerText\Filter\WordList
  */
-class Adverb extends WordList {
-
+class Adverb extends WordList
+{
     /**
-     * Возвращает список слов
+     * Возвращает список слов.
      *
      * @return array
      */
-    public function getWords() {
+    public function getWords()
+    {
         return array(
             // русские предлоги
             'возле', 'близко', 'ближе', 'вблизи', 'неподалёку', 'неподалеку', 'недалеко', 'поблизости', 'невдалеке', 'рядом', 'поодаль',
@@ -240,5 +237,4 @@ class Adverb extends WordList {
             // английские предлоги
         );
     }
-
 }

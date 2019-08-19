@@ -1,8 +1,7 @@
 <?php
 /**
- * AnalyzerText package
- * 
- * @package AnalyzerText
+ * AnalyzerText package.
+ *
  * @author  Peter Gribanov <info@peter-gribanov.ru>
  */
 
@@ -15,25 +14,26 @@ use AnalyzerText\Text\Word;
  * Фильтр итератор
  *
  * @author  Peter Gribanov <info@peter-gribanov.ru>
- * @package AnalyzerText\Filter
  */
-abstract class Filter extends \FilterIterator {
-
+abstract class Filter extends \FilterIterator
+{
     /**
      * Конструктор
      *
      * @param \AnalyzerText\Text $iterator Текст
      */
-    public function __construct(Text $iterator) {
+    public function __construct(Text $iterator)
+    {
         parent::__construct($iterator);
     }
 
     /**
-     * Возвращает текущее слово
+     * Возвращает текущее слово.
      *
      * @return \AnalyzerText\Text\Word
      */
-    public function current() {
+    public function current()
+    {
         return $this->getInnerIterator()->current();
     }
 
@@ -42,7 +42,8 @@ abstract class Filter extends \FilterIterator {
      *
      * @return \AnalyzerText\Text
      */
-    public function getText() {
+    public function getText()
+    {
         return $this->getInnerIterator();
     }
 
@@ -51,46 +52,52 @@ abstract class Filter extends \FilterIterator {
      *
      * @return \AnalyzerText\Text
      */
-    public function getInnerIterator() {
+    public function getInnerIterator()
+    {
         return parent::getInnerIterator();
     }
 
     /**
-     * Заменяет слово в тексте
+     * Заменяет слово в тексте.
      *
      * @param \AnalyzerText\Text\Word $word Слово
      */
-    protected function replace(Word $word) {
+    protected function replace(Word $word)
+    {
         $this->getInnerIterator()->replace($word);
     }
 
     /**
-     * Возвращает предыдущее слово
+     * Возвращает предыдущее слово.
      *
-     * @param integer|null $shift Смещение
+     * @param int|null $shift Смещение
      *
      * @return \AnalyzerText\Text\Word|null
      */
-    protected function getPreviousWord($shift = 1) {
-        return $this->getNextWord($shift*-1);
+    protected function getPreviousWord($shift = 1)
+    {
+        return $this->getNextWord($shift * -1);
     }
 
     /**
-     * Возвращает следующее слово
+     * Возвращает следующее слово.
      *
-     * @param integer|null $shift Смещение
+     * @param int|null $shift Смещение
      *
      * @return \AnalyzerText\Text\Word|null
      */
-    protected function getNextWord($shift = 1) {
+    protected function getNextWord($shift = 1)
+    {
         $position = $this->getText()->key();
+
         try {
-            $this->getText()->seek($position+$shift);
+            $this->getText()->seek($position + $shift);
         } catch (\OutOfBoundsException $e) {
             return null;
         }
         $word = $this->getText()->current();
         $this->getText()->seek($position);
+
         return $word;
     }
 }

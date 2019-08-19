@@ -1,29 +1,26 @@
 <?php
 /**
- * AnalyzerText package
- * 
- * @package AnalyzerText
+ * AnalyzerText package.
+ *
  * @author  Peter Gribanov <info@peter-gribanov.ru>
  */
 
 namespace AnalyzerText\Filter\WordList;
 
-use AnalyzerText\Filter\WordList\WordList;
-
 /**
- * Оставляет в списке предлоги
+ * Оставляет в списке предлоги.
  *
  * @author  Peter Gribanov <info@peter-gribanov.ru>
- * @package AnalyzerText\Filter\WordList
  */
-class Preposition extends WordList {
-
+class Preposition extends WordList
+{
     /**
-     * Возвращает список слов
+     * Возвращает список слов.
      *
      * @return array
      */
-    public function getWords() {
+    public function getWords()
+    {
         return array(
             // русские предлоги
             'без', 'в', 'до', 'для', 'за', 'из', 'к', 'ко', 'на', 'над', 'о', 'об', 'обо', 'от', 'по', 'под', 'пред', 'при', 'про', 'с', 'у',
@@ -35,5 +32,4 @@ class Preposition extends WordList {
             'the', 'a', 'are',
         );
     }
-
 }

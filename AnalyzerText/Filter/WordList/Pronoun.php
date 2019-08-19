@@ -1,29 +1,26 @@
 <?php
 /**
- * AnalyzerText package
- * 
- * @package AnalyzerText
+ * AnalyzerText package.
+ *
  * @author  Peter Gribanov <info@peter-gribanov.ru>
  */
 
 namespace AnalyzerText\Filter\WordList;
 
-use AnalyzerText\Filter\WordList\WordList;
-
 /**
- * Оставляет в списке местоимения
+ * Оставляет в списке местоимения.
  *
  * @author  Peter Gribanov <info@peter-gribanov.ru>
- * @package AnalyzerText\Filter\WordList
  */
-class Pronoun extends WordList {
-
+class Pronoun extends WordList
+{
     /**
-     * Возвращает список слов
+     * Возвращает список слов.
      *
      * @return array
      */
-    public function getWords() {
+    public function getWords()
+    {
         return array(
             // русские местоимения
             'я', 'меня', 'мне', 'мной', 'мною', 'обо мне', 'мы', 'нас', 'нам', 'нами', 'о нас', 'ты', 'тебя', 'тебе', 'тобой', 'тобою', 'вы', 'вас',
@@ -53,5 +50,4 @@ class Pronoun extends WordList {
             'that', 'the same', 'themselves', 'those', 'what', 'whatever', 'which', 'whichever', 'who', 'whoever', 'whom', 'whose', 'yourself',
         );
     }
-
 }

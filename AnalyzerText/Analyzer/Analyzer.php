@@ -1,8 +1,7 @@
 <?php
 /**
- * AnalyzerText package
- * 
- * @package AnalyzerText
+ * AnalyzerText package.
+ *
  * @author  Peter Gribanov <info@peter-gribanov.ru>
  */
 
@@ -12,20 +11,18 @@ use AnalyzerText\Text;
 use AnalyzerText\Filter\Factory;
 
 /**
- * Базовый класс для анализаторов текста
+ * Базовый класс для анализаторов текста.
  *
  * @author  Peter Gribanov <info@peter-gribanov.ru>
- * @package AnalyzerText\Analyzer
  */
-abstract class Analyzer {
-
+abstract class Analyzer
+{
     /**
      * Текст
      *
      * @var \AnalyzerText\Text
      */
     protected $text;
-
 
     /**
      * Устанавливает аналезируемый текст
@@ -34,18 +31,21 @@ abstract class Analyzer {
      *
      * @return \AnalyzerText\Analyzer\Analyze
      */
-    public function setText(Text $text) {
+    public function setText(Text $text)
+    {
         $this->clear();
         $this->text = $text;
+
         return $this;
     }
 
     /**
-     * Возвращает список слов
+     * Возвращает список слов.
      *
      * @return \AnalyzerText\Text
      */
-    public function getText() {
+    public function getText()
+    {
         return $this->text;
     }
 
@@ -54,18 +54,20 @@ abstract class Analyzer {
      *
      * @return \AnalyzerText\Analyzer\Analyze
      */
-    public function clear() {
+    public function clear()
+    {
         $this->text = null;
+
         return $this;
     }
 
     /**
-     * Возвращает фабрику фильтров для применения их
+     * Возвращает фабрику фильтров для применения их.
      *
      * @return AnalyzerText\Filter\Factory
      */
-    public function applyFilters() {
+    public function applyFilters()
+    {
         return new Factory($this);
     }
-
 }
