@@ -1,12 +1,14 @@
 <?php
 
-spl_autoload_register(function ($classname){
-	$filename = __DIR__.'/'.str_replace('\\', '/', $classname).'.php';
-	if (is_readable($filename)) {
-		require $filename;
-		return true;
-	}
-	return false;
+spl_autoload_register(function ($classname) {
+    $filename = __DIR__.'/'.str_replace('\\', '/', $classname).'.php';
+    if (is_readable($filename)) {
+        require $filename;
+
+        return true;
+    }
+
+    return false;
 });
 
 $text = 'порверка как-то так-с';
