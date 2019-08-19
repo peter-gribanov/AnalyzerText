@@ -53,8 +53,8 @@ $word = $text_obj->current();
 Пример реализации анализа естественности текста для SEO оптимизации.
 
 ```php
-$frequency = new \AnalyzerText\Analyzer\Frequency();
-$frequency->setText(new \AnalyzerText\Text($text));
+$frequency = new Frequency();
+$frequency->setText(new Text($text));
 
 // анализируем весь список слов
 $graph = array_slice(array_merge_recursive($frequency->getFrequency(), $frequency->getPercent()), 0, 20);
@@ -64,8 +64,9 @@ $frequency->applyFilters()->Informative();
 $graph_filter = array_slice(array_merge_recursive($frequency->getFrequency(), $frequency->getPercent()), 0, 20);
 ```
 
+<img src="example.png" align="center">
+
 Производительность
-------------------
 
 Для анализа производительности использовался следующий код
 
@@ -73,8 +74,8 @@ $graph_filter = array_slice(array_merge_recursive($frequency->getFrequency(), $f
 $i = $ii = 1000;
 $start = microtime(1);
 while ($i--) {
-    $frequency = new \AnalyzeText\Analyzer\Frequency();
-    $frequency->setText(new \AnalyzeText\Text($text))->applyFilters()->Informative();
+    $frequency = new Frequency();
+    $frequency->setText(new Text($text))->applyFilters()->Informative();
     $frequency->getFrequency();
     $frequency->getPercent();
 }
