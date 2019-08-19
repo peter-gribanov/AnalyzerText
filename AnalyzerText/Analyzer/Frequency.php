@@ -49,7 +49,7 @@ class Frequency extends Analyzer
      */
     public function getFrequency()
     {
-        if (!$this->frequencies && $this->getText()->count()) {
+        if (empty($this->frequencies) && $this->getText()->count()) {
             foreach ($this->getText() as $word) {
                 if (!isset($this->frequencies[$word->getPlain()])) {
                     $this->frequencies[$word->getPlain()] = 0;
@@ -69,7 +69,7 @@ class Frequency extends Analyzer
      */
     public function getPercent()
     {
-        if (!$this->percent && ($frequencies = $this->getFrequency())) {
+        if (empty($this->percent) && ($frequencies = $this->getFrequency())) {
             $ratio = max($frequencies) / 100;
             foreach ($frequencies as $word => $frequency) {
                 $this->percent[$word] = $frequency / $ratio;
