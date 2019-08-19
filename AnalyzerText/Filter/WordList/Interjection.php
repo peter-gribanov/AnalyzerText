@@ -1,29 +1,26 @@
 <?php
 /**
- * AnalyzerText package
- * 
- * @package AnalyzerText
+ * AnalyzerText package.
+ *
  * @author  Peter Gribanov <info@peter-gribanov.ru>
  */
 
 namespace AnalyzerText\Filter\WordList;
 
-use AnalyzerText\Filter\WordList\WordList;
-
 /**
- * Оставляет в списке междометья
+ * Оставляет в списке междометья.
  *
  * @author  Peter Gribanov <info@peter-gribanov.ru>
- * @package AnalyzerText\Filter\WordList
  */
-class Interjection extends WordList {
-
+class Interjection extends WordList
+{
     /**
-     * Возвращает список слов
+     * Возвращает список слов.
      *
      * @return array
      */
-    public function getWords() {
+    public function getWords()
+    {
         return array(
             // русские междометья
             'ох', 'ого', 'ого', 'эй', 'эх', 'цып', 'брысь', 'aх', 'ух', 'брр', 'тпру', 'гм', 'дзинь', 'тс', 'цс', 'тьфу',
@@ -36,5 +33,4 @@ class Interjection extends WordList {
             'ok', 'oh', 'ah', 'bravo',
         );
     }
-
 }

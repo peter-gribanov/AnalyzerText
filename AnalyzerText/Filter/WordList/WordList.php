@@ -1,8 +1,7 @@
 <?php
 /**
- * AnalyzerText package
- * 
- * @package AnalyzerText
+ * AnalyzerText package.
+ *
  * @author  Peter Gribanov <info@peter-gribanov.ru>
  */
 
@@ -13,24 +12,23 @@ use AnalyzerText\Text;
 use AnalyzerText\Text\Word;
 
 /**
- * Оставляет в списке слова из списка или удаляет их
+ * Оставляет в списке слова из списка или удаляет их.
  *
  * Проходи по списку слов и проверяет, что они находится в списке слов которые нужно оставить
  *
  * @author  Peter Gribanov <info@peter-gribanov.ru>
- * @package AnalyzerText\Filter\WordList
  */
-abstract class WordList extends Filter {
-
+abstract class WordList extends Filter
+{
     /**
-     * Простые слова
+     * Простые слова.
      *
      * @var array
      */
     private $simple = array();
 
     /**
-     * Составные слова
+     * Составные слова.
      *
      * Составные слова о части которого нам известно.
      * Например слово пишется через тирэ
@@ -40,19 +38,19 @@ abstract class WordList extends Filter {
     private $composite = array();
 
     /**
-     * Последовательности из набора слов
+     * Последовательности из набора слов.
      *
      * @var array
      */
     private $sequence = array();
-
 
     /**
      * Конструктор
      *
      * @param \AnalyzerText\Text $iterator Текст
      */
-    public function __construct(Text $iterator) {
+    public function __construct(Text $iterator)
+    {
         parent::__construct($iterator);
         $this->repackWordList();
     }
@@ -60,71 +58,79 @@ abstract class WordList extends Filter {
     /**
      * Проверяет, является ли текущее слово допустимым
      *
-     * @return boolean
+     * @return bool
      */
-    public function accept() {
+    public function accept()
+    {
         $word = $this->current();
+
         return $this->isSequence($word) || $this->isSimple($word) || $this->isComposite($word);
     }
 
     /**
-     * Это последовательность
+     * Это последовательность.
      *
      * @param \AnalyzerText\Text\Word $word Слово
      *
-     * @return boolean
+     * @return bool
      */
-    public function isSequence(Word $word) {
+    public function isSequence(Word $word)
+    {
         $plain = $word->getPlain();
         foreach ($this->sequence as $sequence) {
             if ($sequence[0] == $plain) {
-                for ($i = 1; $i < count($sequence); $i++) {
+                for ($i = 1; $i < count($sequence); ++$i) {
                     if (!($word = $this->getNextWord($i)) || $word->getPlain() != $sequence[$i]) {
                         return false;
                     }
                 }
                 // удаляем слова из последовательности
                 $key = $this->getText()->key();
-                for ($i = 1; $i < count($sequence); $i++) {
-                    $this->getText()->seek($key+$i);
+                for ($i = 1; $i < count($sequence); ++$i) {
+                    $this->getText()->seek($key + $i);
                     $this->getText()->remove();
                 }
                 $this->getText()->seek($key);
+
                 return true;
             }
         }
+
         return false;
     }
 
     /**
-     * Это простое слово
+     * Это простое слово.
      *
      * @param \AnalyzerText\Text\Word $word Слово
      *
-     * @return boolean
+     * @return bool
      */
-    public function isSimple(Word $word) {
+    public function isSimple(Word $word)
+    {
         return in_array($word->getPlain(), $this->simple);
     }
 
     /**
-     * Это составное слово
+     * Это составное слово.
      *
      * @param \AnalyzerText\Text\Word $word Слово
      *
-     * @return boolean
+     * @return bool
      */
-    public function isComposite(Word $word) {
+    public function isComposite(Word $word)
+    {
         foreach ($this->composite as $reg) {
             if (preg_match($reg, $word->getWord())) {
                 return true;
             }
         }
+
         return false;
     }
 
     /**
-     * Возвращает список слов
+     * Возвращает список слов.
      *
      * Возвращает список слов которые необходимо удалить или оставить
      * Если слово составное и пишестся через тире, но одна из частей может менятся например:
@@ -151,26 +157,23 @@ abstract class WordList extends Filter {
     abstract public function getWords();
 
     /**
-     * Разбор набора шаблонов слов и составление условий поиска соответствий
+     * Разбор набора шаблонов слов и составление условий поиска соответствий.
      */
-    private function repackWordList() {
+    private function repackWordList()
+    {
         $words = $this->getWords();
         // разбор на категории
         foreach ($words as $word) {
             if ($word[0] == '/') { // регулярное выражение
                 $this->composite[] = $word;
-
             } elseif (strpos($word, ' ') !== false) { // последовательность
                 $this->sequence[] = explode(' ', $word);
-
             } elseif (strpos($word, '*') !== false) { // псевдо регулярка
                 // из записи *-то делаем регулярное выражение вида: /^.+?\-то$/ui
                 $this->composite[] = '/^'.str_replace('\*', '.+?', preg_quote($word, '/')).'$/ui';
-
             } else { // простое слово
                 $this->simple[] = $word;
             }
         }
     }
-
 }

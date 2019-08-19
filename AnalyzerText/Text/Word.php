@@ -1,35 +1,32 @@
 <?php
 /**
- * AnalyzerText package
- * 
- * @package AnalyzerText
+ * AnalyzerText package.
+ *
  * @author  Peter Gribanov <info@peter-gribanov.ru>
  */
 
 namespace AnalyzerText\Text;
 
 /**
- * Слово в тексте
+ * Слово в тексте.
  *
  * @author  Peter Gribanov <info@peter-gribanov.ru>
- * @package AnalyzerText\Text
  */
-class Word {
-
+class Word
+{
     /**
-     * Слово в тексте
+     * Слово в тексте.
      *
      * @var string
      */
     protected $word = '';
 
     /**
-     * Простая форма слова в тексте
+     * Простая форма слова в тексте.
      *
      * @var string
      */
     protected $plain = '';
-
 
     /**
      * Конструктор
@@ -37,36 +34,39 @@ class Word {
      * @param string $word       Слово в тексте
      * @param string $lower_case Простая форма слова в тексте
      */
-    public function __construct($word, $plain) {
-        $this->word  = $word;
+    public function __construct($word, $plain)
+    {
+        $this->word = $word;
         $this->plain = $plain;
     }
 
     /**
-     * Возвращает слово из текста
+     * Возвращает слово из текста.
      *
      * @return string
      */
-    public function getWord() {
+    public function getWord()
+    {
         return $this->word;
     }
 
     /**
-     * Возвращает простую форму слова из текста
+     * Возвращает простую форму слова из текста.
      *
      * @return string
      */
-    public function getPlain() {
+    public function getPlain()
+    {
         return $this->plain;
     }
 
     /**
-     * Возвращает слово
+     * Возвращает слово.
      *
      * @return string
      */
-    public function __toString() {
+    public function __toString()
+    {
         return $this->getWord();
     }
-
 }

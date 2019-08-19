@@ -1,29 +1,26 @@
 <?php
 /**
- * AnalyzerText package
- * 
- * @package AnalyzerText
+ * AnalyzerText package.
+ *
  * @author  Peter Gribanov <info@peter-gribanov.ru>
  */
 
 namespace AnalyzerText\Filter\WordList;
 
-use AnalyzerText\Filter\WordList\WordList;
-
 /**
- * Оставляет в списке частицы
+ * Оставляет в списке частицы.
  *
  * @author  Peter Gribanov <info@peter-gribanov.ru>
- * @package AnalyzerText\Filter\WordList
  */
-class Particle extends WordList {
-
+class Particle extends WordList
+{
     /**
-     * Возвращает список слов
+     * Возвращает список слов.
      *
      * @return array
      */
-    public function getWords() {
+    public function getWords()
+    {
         return array(
             // русские междометья
             'пусть', 'пускай', 'давайте', 'да', 'давай', 'бы,', 'б', 'бывало', 'не', 'ни', 'ли', 'неужели', 'разве', 'вот', 'вон',
@@ -42,5 +39,4 @@ class Particle extends WordList {
             // английские междометья
         );
     }
-
 }
