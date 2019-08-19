@@ -18,18 +18,16 @@ use AnalyzerText\Filter\Factory;
 abstract class Analyzer
 {
     /**
-     * Текст
-     *
-     * @var \AnalyzerText\Text
+     * @var Text
      */
     protected $text;
 
     /**
      * Устанавливает аналезируемый текст
      *
-     * @param \AnalyzerText\Text $text Текст
+     * @param Text $text
      *
-     * @return \AnalyzerText\Analyzer\Analyze
+     * @return Analyzer
      */
     public function setText(Text $text)
     {
@@ -42,7 +40,7 @@ abstract class Analyzer
     /**
      * Возвращает список слов.
      *
-     * @return \AnalyzerText\Text
+     * @return Text
      */
     public function getText()
     {
@@ -52,7 +50,7 @@ abstract class Analyzer
     /**
      * Очищает анализатор
      *
-     * @return \AnalyzerText\Analyzer\Analyze
+     * @return Analyzer
      */
     public function clear()
     {
@@ -64,7 +62,7 @@ abstract class Analyzer
     /**
      * Возвращает фабрику фильтров для применения их.
      *
-     * @return AnalyzerText\Filter\Factory
+     * @return Factory
      */
     public function applyFilters()
     {

@@ -32,9 +32,7 @@ class Informative extends Filter
     private $filters = array();
 
     /**
-     * Конструктор
-     *
-     * @param \AnalyzerText\Text $iterator Текст
+     * @param Text $iterator Текст
      */
     public function __construct(Text $iterator)
     {
@@ -50,8 +48,6 @@ class Informative extends Filter
     }
 
     /**
-     * (non-PHPdoc).
-     *
      * @see \FilterIterator::accept()
      */
     public function accept()

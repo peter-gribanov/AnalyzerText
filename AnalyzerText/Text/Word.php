@@ -29,10 +29,8 @@ class Word
     protected $plain = '';
 
     /**
-     * Конструктор
-     *
-     * @param string $word       Слово в тексте
-     * @param string $lower_case Простая форма слова в тексте
+     * @param string $word  Слово в тексте
+     * @param string $plain Простая форма слова в тексте
      */
     public function __construct($word, $plain)
     {
@@ -67,6 +65,6 @@ class Word
      */
     public function __toString()
     {
-        return $this->getWord();
+        return $this->word;
     }
 }
