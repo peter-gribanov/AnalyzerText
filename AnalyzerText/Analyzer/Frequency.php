@@ -31,14 +31,15 @@ class Frequency extends Analyzer
     /**
      * Очищает анализатор
      *
-     * @return \AnalyzerText\Analyzer\Frequency
+     * @return Frequency
      */
     public function clear()
     {
         $this->frequencies = array();
         $this->percent = array();
+        parent::clear();
 
-        return parent::clear();
+        return $this;
     }
 
     /**

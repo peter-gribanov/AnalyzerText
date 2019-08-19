@@ -1,11 +1,21 @@
+[![Latest Stable Version](https://img.shields.io/packagist/v/gribanov/analyzer-text.svg?maxAge=3600&label=stable)](https://packagist.org/packages/gribanov/analyzer-text)
+[![PHP from Travis config](https://img.shields.io/travis/php-v/peter-gribanov/AnalyzerText.svg?maxAge=3600)](https://packagist.org/packages/gribanov/analyzer-text)
+[![Build Status](https://img.shields.io/travis/peter-gribanov/AnalyzerText.svg?maxAge=3600)](https://travis-ci.org/peter-gribanov/AnalyzerText)
+[![Coverage Status](https://img.shields.io/coveralls/peter-gribanov/AnalyzerText.svg?maxAge=3600)](https://coveralls.io/github/peter-gribanov/AnalyzerText?branch=master)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/peter-gribanov/AnalyzerText.svg?maxAge=3600)](https://scrutinizer-ci.com/g/peter-gribanov/AnalyzerText/?branch=master)
+[![StyleCI](https://styleci.io/repos/9087072/shield?branch=master)](https://styleci.io/repos/9087072)
+[![License](https://img.shields.io/packagist/l/peter-gribanov/AnalyzerText.svg?maxAge=3600)](https://github.com/peter-gribanov/AnalyzerText)
+
 Анализатор текста
-============
+=================
 
 Инструмент для анализа произвольного текста и получения из него максимум информации
 
-## Текс
+Текс
+----
 
 Текс в приложени представляется в виде объектна-итератора и соответственно ячейкой итератора является объект слова.
+
 ```php
 $text = '...'; // некоторый текст
 $text_obj = new \AnalyzeText\Text($text);
@@ -17,25 +27,31 @@ $word = $text_obj->current();
 
 *Текст на входе ожидается в кодировке UTF-8*
 
-## Анализаторы
+Анализаторы
+-----------
 
 Для анализа можно использовать предустановленные анализаторы передавая им объект текса.
-* **Frequency** - подсчитывает частоту появления слова в тексте и процентное отнашение частоту появления к самому популярному слову.
 
-## Фильтры
+* `Frequency` - подсчитывает частоту появления слова в тексте и процентное отнашение частоту появления к самому популярному слову.
+
+Фильтры
+-------
 
 Набор фильтров для чистки текста содержащие более чем 3000 слов в библиотеке.
-* **Adverb** - наречия
-* **Interjection** - междометья
-* **Particle** - частицы
-* **Preposition** - предлоги
-* **Pronoun** - местоимения
-* **Union** - союзы
-* **Informative** - информационные слова(фильтрует все описынные выше)
 
-## Использование
+* `Adverb` - наречия
+* `Interjection` - междометья
+* `Particle` - частицы
+* `Preposition` - предлоги
+* `Pronoun` - местоимения
+* `Union` - союзы
+* `Informative` - информационные слова(фильтрует все описынные выше)
+
+Использование
+-------------
 
 Пример реализации анализа естественности текста для SEO оптимизации.
+
 ```php
 $frequency = new Frequency();
 $frequency->setText(new Text($text));
@@ -50,19 +66,20 @@ $graph_filter = array_slice(array_merge_recursive($frequency->getFrequency(), $f
 
 <img src="example.png" align="center">
 
-## Производительность
+Производительность
 
 Для анализа производительности использовался следующий код
+
 ```php
 $i = $ii = 1000;
 $start = microtime(1);
 while ($i--) {
-	$frequency = new Frequency();
-	$frequency->setText(new Text($text))->applyFilters()->Informative();
-	$frequency->getFrequency();
-	$frequency->getPercent();
+    $frequency = new Frequency();
+    $frequency->setText(new Text($text))->applyFilters()->Informative();
+    $frequency->getFrequency();
+    $frequency->getPercent();
 }
-echo (microtime(1)-$start)/$ii;
+echo (microtime(1) - $start) / $ii;
 ```
 
 Для теста взят текст в 15190 символов, 2707 слов.

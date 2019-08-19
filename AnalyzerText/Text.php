@@ -26,9 +26,7 @@ class Text extends \ArrayIterator
     protected $plains = array();
 
     /**
-     * Конструктор
-     *
-     * @param string $text Текст
+     * @param string $text
      */
     public function __construct($text)
     {
@@ -55,7 +53,7 @@ class Text extends \ArrayIterator
     /**
      * Возвращает текущий элемент
      *
-     * @return \AnalyzerText\Text\Word
+     * @return Word
      */
     public function current()
     {
@@ -74,7 +72,7 @@ class Text extends \ArrayIterator
     /**
      * Заменяет слово в тексте.
      *
-     * @param \AnalyzerText\Text\Word $word Слово
+     * @param Word $word
      */
     public function replace(Word $word)
     {
