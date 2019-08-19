@@ -1,8 +1,7 @@
 <?php
 /**
- * AnalyzerText package
- * 
- * @package AnalyzerText
+ * AnalyzerText package.
+ *
  * @author  Peter Gribanov <info@peter-gribanov.ru>
  */
 
@@ -10,84 +9,86 @@ namespace AnalyzerText;
 
 use AnalyzerText\Text\Word;
 
-
 /**
  * Анализируемый текст
  *
  * Класс используется для абстрагирования мотодов доступа к словами в тексте, предоставляя простой интерфейс
  *
  * @author  Peter Gribanov <info@peter-gribanov.ru>
- * @package AnalyzerText
  */
-class Text extends \ArrayIterator {
+class Text extends \ArrayIterator
+{
+    /**
+     * Спиок всех слов в тексте в простой форме.
+     *
+     * @var array
+     */
+    protected $plains = array();
 
-	/**
-	 * Спиок всех слов в тексте в простой форме
-	 *
-	 * @var array
-	 */
-	protected $plains = array();
+    /**
+     * Конструктор
+     *
+     * @param string $text Текст
+     */
+    public function __construct($text)
+    {
+        $words = array();
+        // слово не может начинаться с тире и не может содержать только его
+        if (preg_match_all('/[[:alnum:]]+(?:[-\'][[:alnum:]]+)*/u', trim(strip_tags($text)), $match)) {
+            $words = $match[0];
+            // получение списка слов в нижнем регистре
+            $this->plains = explode(' ', mb_strtolower(implode(' ', $words), 'utf8'));
+        }
+        parent::__construct($words);
+    }
 
+    /**
+     * Возвращает список слов.
+     *
+     * @return array
+     */
+    public function getWords()
+    {
+        return $this->getArrayCopy();
+    }
 
-	/**
-	 * Конструктор
-	 *
-	 * @param string $text Текст
-	 */
-	public function __construct($text) {
-		$words = array();
-		// слово не может начинаться с тире и не может содержать только его
-		if (preg_match_all('/[[:alnum:]]+(?:[-\'][[:alnum:]]+)*/u', trim(strip_tags($text)), $match)) {
-			$words = $match[0];
-			// получение списка слов в нижнем регистре
-			$this->plains = explode(' ', mb_strtolower(implode(' ', $words), 'utf8'));
-		}
-		parent::__construct($words);
-	}
+    /**
+     * Возвращает текущий элемент
+     *
+     * @return \AnalyzerText\Text\Word
+     */
+    public function current()
+    {
+        return new Word(parent::current(), $this->plains[$this->key()]);
+    }
 
-	/**
-	 * Возвращает список слов
-	 *
-	 * @return array
-	 */
-	public function getWords() {
-		return $this->getArrayCopy();
-	}
+    /**
+     * Удаляет слово из текста.
+     */
+    public function remove()
+    {
+        $this->offsetUnset($this->key());
+        unset($this->plains[$this->key()]);
+    }
 
-	/**
-	 * Возвращает текущий элемент
-	 *
-	 * @return \AnalyzerText\Text\Word
-	 */
-	public function current() {
-		return new Word(parent::current(), $this->plains[$this->key()]);
-	}
+    /**
+     * Заменяет слово в тексте.
+     *
+     * @param \AnalyzerText\Text\Word $word Слово
+     */
+    public function replace(Word $word)
+    {
+        $this->offsetSet($this->key(), $word->getWord());
+        $this->plains[$this->key()] = $word->getPlain();
+    }
 
-	/**
-	 * Удаляет слово из текста
-	 */
-	public function remove() {
-		$this->offsetUnset($this->key());
-		unset($this->plains[$this->key()]);
-	}
-
-	/**
-	 * Заменяет слово в тексте
-	 *
-	 * @param \AnalyzerText\Text\Word $word Слово
-	 */
-	public function replace(Word $word) {
-		$this->offsetSet($this->key(), $word->getWord());
-		$this->plains[$this->key()] = $word->getPlain();
-	}
-
-	/**
-	 * Возвращает текст
-	 *
-	 * @return string
-	 */
-	public function __toString() {
-		return implode(' ', $this->getWords());
-	}
-
+    /**
+     * Возвращает текст
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return implode(' ', $this->getWords());
+    }
 }

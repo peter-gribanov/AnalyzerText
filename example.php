@@ -1,13 +1,6 @@
 <?php
 
-spl_autoload_register(function ($classname){
-	$filename = __DIR__.'/'.str_replace('\\', '/', $classname).'.php';
-	if (is_readable($filename)) {
-		require $filename;
-		return true;
-	}
-	return false;
-});
+require __DIR__.'/vendor/autoload.php';
 
 $text = 'порверка как-то так-с';
 
