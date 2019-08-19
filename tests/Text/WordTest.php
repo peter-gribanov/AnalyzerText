@@ -1,4 +1,5 @@
 <?php
+
 namespace AnalyzerText\Tests\Text;
 
 use AnalyzerText\Text\Word;
