@@ -7,8 +7,8 @@
 
 namespace AnalyzerText\Analyzer;
 
-use AnalyzerText\Text;
 use AnalyzerText\Filter\Factory;
+use AnalyzerText\Text;
 
 /**
  * Базовый класс для анализаторов текста.
