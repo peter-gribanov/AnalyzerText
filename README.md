@@ -4,7 +4,7 @@
 [![Coverage Status](https://img.shields.io/coveralls/peter-gribanov/AnalyzerText.svg?maxAge=3600)](https://coveralls.io/github/peter-gribanov/AnalyzerText?branch=master)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/peter-gribanov/AnalyzerText.svg?maxAge=3600)](https://scrutinizer-ci.com/g/peter-gribanov/AnalyzerText/?branch=master)
 [![StyleCI](https://styleci.io/repos/9087072/shield?branch=master)](https://styleci.io/repos/9087072)
-[![License](https://img.shields.io/packagist/l/peter-gribanov/AnalyzerText.svg?maxAge=3600)](https://github.com/peter-gribanov/AnalyzerText)
+[![License](https://img.shields.io/packagist/l/gribanov/analyzer-text.svg?maxAge=3600)](https://github.com/peter-gribanov/AnalyzerText)
 
 Анализатор текста
 =================
