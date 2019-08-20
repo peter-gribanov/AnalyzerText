@@ -17,6 +17,11 @@ class FrequencyTest extends \PHPUnit_Framework_TestCase
         $this->frequency = new Frequency();
     }
 
+    protected function tearDown()
+    {
+        $this->frequency->clear();
+    }
+
     public function testGetSetText()
     {
         $this->assertNull($this->frequency->getText());

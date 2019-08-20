@@ -7,6 +7,7 @@
 
 namespace AnalyzerText\Filter;
 
+use AnalyzerText\Filter\WordList\WordList;
 use AnalyzerText\Text;
 use AnalyzerText\Filter\WordList\Adverb;
 use AnalyzerText\Filter\WordList\Interjection;
@@ -27,7 +28,7 @@ class Informative extends Filter
     /**
      * Список фильтров.
      *
-     * @var array
+     * @var WordList[]
      */
     private $filters = array();
 
