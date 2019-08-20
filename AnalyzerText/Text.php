@@ -53,11 +53,21 @@ class Text extends \ArrayIterator
     /**
      * Возвращает текущий элемент
      *
-     * @return Word
+     * @return Word|null
      */
     public function current()
     {
-        return new Word(parent::current(), $this->plains[$this->key()]);
+        return parent::current() ? new Word(parent::current(), $this->plains[$this->key()]) : null;
+    }
+
+    /**
+     * @param int $index
+     *
+     * @return Word|null
+     */
+    public function offsetGet($index)
+    {
+        return $this->offsetExists($index) ? new Word(parent::offsetGet($index), $this->plains[$index]) : null;
     }
 
     /**
