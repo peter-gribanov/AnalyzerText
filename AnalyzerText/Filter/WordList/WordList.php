@@ -76,20 +76,19 @@ abstract class WordList extends Filter
     {
         $plain = $word->getPlain();
         foreach ($this->sequence as $sequence) {
-            if ($sequence[0] == $plain) {
+            if ($sequence[0] === $plain) {
                 $sequence_length = count($sequence);
                 for ($i = 1; $i < $sequence_length; ++$i) {
-                    if (!($word = $this->getNextWord($i)) || $word->getPlain() != $sequence[$i]) {
-                        return false;
+                    if (!($next_word = $this->getNextWord($i)) || $next_word->getPlain() != $sequence[$i]) {
+                        continue 2;
                     }
                 }
+
                 // удаляем слова из последовательности
                 $key = $this->getText()->key();
                 for ($i = 1; $i < $sequence_length; ++$i) {
-                    $this->getText()->seek($key + $i);
-                    $this->getText()->remove();
+                    $this->getText()->offsetUnset($key + $i);
                 }
-                $this->getText()->seek($key);
 
                 return true;
             }

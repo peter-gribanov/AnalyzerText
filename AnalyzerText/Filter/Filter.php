@@ -68,34 +68,24 @@ abstract class Filter extends \FilterIterator
     /**
      * Возвращает предыдущее слово.
      *
-     * @param int|null $shift Смещение
+     * @param int $shift Смещение
      *
      * @return Word|null
      */
     protected function getPreviousWord($shift = 1)
     {
-        return $this->getNextWord($shift * -1);
+        return $this->getText()->offsetGet($this->getText()->key() + $shift * -1);
     }
 
     /**
      * Возвращает следующее слово.
      *
-     * @param int|null $shift Смещение
+     * @param int $shift Смещение
      *
      * @return Word|null
      */
     protected function getNextWord($shift = 1)
     {
-        $position = $this->getText()->key();
-
-        try {
-            $this->getText()->seek($position + $shift);
-        } catch (\OutOfBoundsException $e) {
-            return null;
-        }
-        $word = $this->getText()->current();
-        $this->getText()->seek($position);
-
-        return $word;
+        return $this->getText()->offsetGet($this->getText()->key() + $shift);
     }
 }
