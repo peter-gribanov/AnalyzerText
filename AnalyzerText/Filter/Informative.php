@@ -13,6 +13,7 @@ use AnalyzerText\Filter\WordList\Particle;
 use AnalyzerText\Filter\WordList\Preposition;
 use AnalyzerText\Filter\WordList\Pronoun;
 use AnalyzerText\Filter\WordList\Union;
+use AnalyzerText\Filter\WordList\WordList;
 use AnalyzerText\Text;
 
 /**
@@ -27,7 +28,7 @@ class Informative extends Filter
     /**
      * Список фильтров.
      *
-     * @var array
+     * @var WordList[]
      */
     private $filters = array();
 

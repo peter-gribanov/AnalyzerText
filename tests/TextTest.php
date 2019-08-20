@@ -15,7 +15,7 @@ class TextTest extends \PHPUnit_Framework_TestCase
         return array(
             array('foo', array('foo')),
             array('-foo bar', array('foo', 'bar')),
-            array('Foo Bar', array('Foo', 'Bar')),
+            array('Foo, Bar', array('Foo', 'Bar')),
             array('Привет мир!', array('Привет', 'мир')),
             array('Что-то там и что-то еще.', array('Что-то', 'там', 'и', 'что-то', 'еще')),
             array('12345', array('12345')),
