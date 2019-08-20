@@ -80,13 +80,13 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
      * @dataProvider getInformativeText
      *
      * @param string $text
-     * @param string $result
+     * @param string $expected
      */
-    public function testInformative($text, $result)
+    public function testInformative($text, $expected)
     {
         $this->analyzer->setText(new Text($text));
         $this->factory->Informative();
 
-        $this->assertEquals($result, (string) $this->analyzer->getText());
+        $this->assertEquals($expected, (string) $this->analyzer->getText());
     }
 }
