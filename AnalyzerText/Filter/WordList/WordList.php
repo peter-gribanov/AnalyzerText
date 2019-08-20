@@ -87,10 +87,8 @@ abstract class WordList extends Filter
                 // удаляем слова из последовательности
                 $key = $this->getText()->key();
                 for ($i = 1; $i < $sequence_length; ++$i) {
-                    $this->getText()->seek($key + $i);
-                    $this->getText()->remove();
+                    $this->getText()->offsetUnset($key + $i);
                 }
-                $this->getText()->seek($key);
 
                 return true;
             }
