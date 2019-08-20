@@ -7,13 +7,13 @@
 
 namespace AnalyzerText\Filter;
 
-use AnalyzerText\Text;
 use AnalyzerText\Filter\WordList\Adverb;
 use AnalyzerText\Filter\WordList\Interjection;
 use AnalyzerText\Filter\WordList\Particle;
 use AnalyzerText\Filter\WordList\Preposition;
 use AnalyzerText\Filter\WordList\Pronoun;
 use AnalyzerText\Filter\WordList\Union;
+use AnalyzerText\Text;
 
 /**
  * Оставляет только информационные слова.
