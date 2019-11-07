@@ -4,8 +4,9 @@ namespace AnalyzerText\Tests;
 
 use AnalyzerText\Text;
 use AnalyzerText\Text\Word;
+use PHPUnit\Framework\TestCase;
 
-class TextTest extends \PHPUnit_Framework_TestCase
+class TextTest extends TestCase
 {
     /**
      * @return array
