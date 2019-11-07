@@ -4,8 +4,9 @@ namespace AnalyzerText\Tests\Analyzer;
 
 use AnalyzerText\Analyzer\Frequency;
 use AnalyzerText\Text;
+use PHPUnit\Framework\TestCase;
 
-class FrequencyTest extends \PHPUnit_Framework_TestCase
+class FrequencyTest extends TestCase
 {
     /**
      * @var Frequency

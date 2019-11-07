@@ -6,8 +6,9 @@ use AnalyzerText\Analyzer\Analyzer;
 use AnalyzerText\Analyzer\Frequency;
 use AnalyzerText\Filter\Factory;
 use AnalyzerText\Text;
+use PHPUnit\Framework\TestCase;
 
-class FactoryTest extends \PHPUnit_Framework_TestCase
+class FactoryTest extends TestCase
 {
     /**
      * @var Factory
